@@ -33,7 +33,7 @@ npm start
 
 ### Demo
 
-1. Hlleo,World
+1. Helloworld
 ```bash
 Hellowordl.jsx
 ```
