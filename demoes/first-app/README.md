@@ -1,11 +1,12 @@
 ### 预览项目
-1. 安装 `create-react-app`
+1. 克隆项目到本地
 ```bash
-npm i create-react-app -g
+git clone https://github.com/ifyour/learn-react.git
 ```
 
 2. 安装依赖
 ```bash
+ cd learn-react/demoes/first-app
 npm install
 ```
 
