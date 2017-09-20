@@ -6,7 +6,7 @@ git clone https://github.com/ifyour/learn-react.git
 
 2. 安装依赖
 ```bash
- cd learn-react/demoes/first-app
+cd learn-react/demoes/first-app
 npm install
 ```
 
