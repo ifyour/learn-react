@@ -3,4 +3,3 @@ node_modules
 *.log
 coverage
 RELEASE_NOTE*.md
-.vscode
