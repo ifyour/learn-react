@@ -1,15 +1,13 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-
 import { connect } from 'react-redux';
 import { login  } from './Auth.redux';
-
 
 // react-redux 把 state 和 对应的 redux 中的 action 全部混合成 props 传入组件
 @connect(
     // state -> props
     state => state.auth,
-    // action
+    // action creater
     { login }
 )
 class Auth extends React.Component {

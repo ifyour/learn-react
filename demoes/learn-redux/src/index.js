@@ -6,19 +6,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 // react-redux 用来优雅连接  react 和 redux
 import { Provider } from 'react-redux';
-import { 
-    BrowserRouter, 
-    Route, 
-    Redirect, 
-    Switch 
-} from 'react-router-dom'
-
-// import { counter } from './index.redux';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import reducers from './reducer'
-
 import Auth from './Auth';
 import Dashboard from './Dashboard';
-
 
 // 使用 redux 提供的 applyMiddleware 来处理异步
 // compose 用来混合 2 个函数
@@ -26,7 +17,6 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk), 
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
-
 
 ReactDom.render(
     <Provider store={ store }>
