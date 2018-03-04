@@ -5,7 +5,7 @@ import { addgun, removegun, addgunAsyac } from './index.redux'
 // 使用 babel 插件 transform-decorators-legacy , 采用装饰器写法
 @connect(
     // 需要什么 state 放入到 props 里
-    state => ({num: state}),
+    state => ({num: state.counter}),
     // 有哪些变更 state 的 action 方法, 这些都能自动进行 dispatch 任务(React-redux 包装后)
     { addgun, removegun, addgunAsyac }
 )
