@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import { 
     BrowserRouter, 
     Route, 
-    Link, 
     Redirect, 
     Switch 
 } from 'react-router-dom'
@@ -34,7 +33,7 @@ ReactDom.render(
         <BrowserRouter>
             <Switch>
                 <Route path='/login' exact component={ Auth }></Route>
-                <Route path='/dashboard'  component={ Dashboard }></Route>
+                <Route path='/dashboard' component={ Dashboard }></Route>
                 <Redirect to='/dashboard'></Redirect>
             </Switch>
         </BrowserRouter>

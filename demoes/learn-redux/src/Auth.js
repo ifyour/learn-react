@@ -12,11 +12,7 @@ import { login  } from './Auth.redux';
     // action
     { login }
 )
-
 class Auth extends React.Component {
-    constructor () {
-        super()
-    }
     render() {
         return (
            <div>

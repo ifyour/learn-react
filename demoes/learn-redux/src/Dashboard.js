@@ -11,42 +11,38 @@ function TeamThree() {
 function TeamTwo() {
     return <h2>二营</h2>
 }
-class Page404 extends React.Component {
-    constructor() {
-        super()
-    }
-    render() {
-        console.log(this.props);
-        return <h2>Page Not Found! </h2>;
-    }
-}
-
+// class Page404 extends React.Component {
+//     constructor() {
+//         super()
+//     }
+//     render() {
+//         console.log(this.props);
+//         return <h2>Page Not Found! </h2>;
+//     }
+// }
 
 @connect(
     state => state.auth,
     { logout }
 )
-
-
 class Dashboard extends React.Component {
-    constructor (props) {
-        super(props)
-    }
     render() {
-        console.log(this.props)
+        // 匹配路由信息，子组件配置路由，需要绝对地址，父级传来的 /dashboard 要继续挨着写
+        const { match } = this.props;
         const redirectToLogin = <Redirect to='/login'></Redirect>
         const app = (
             <div>
                 <h2>控制面板</h2>
+                <button onClick={ this.props.logout }>注销</button>
                 <ul>
-                    <li><Link to='/dashboard/'>一营</Link></li>
-                    <li><Link to='/dashboard/two'>二营</Link></li>
-                    <li><Link to='/dashboard/three'>三营</Link></li>
+                    <li><Link to={`${ match.url }/`}>一营</Link></li>
+                    <li><Link to={`${ match.url }/two`}>二营</Link></li>
+                    <li><Link to={`${ match.url }/three`}>三营</Link></li>
                 </ul>
 
-                <Route path='/dashboard/' exact component={ App }></Route>
-                <Route path='/dashboard/two' component={ TeamTwo }></Route>
-                <Route path='/dashboard/three' component={ TeamThree }></Route>
+                <Route path={`${ match.url }/`} exact component={ App }></Route>
+                <Route path={`${ match.url }/two`} component={ TeamTwo }></Route>
+                <Route path={`${ match.url }/three`} component={ TeamThree }></Route>
             </div>
         )
         return this.props.isAuth ? app : redirectToLogin;
