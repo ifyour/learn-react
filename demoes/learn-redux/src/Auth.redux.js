@@ -30,7 +30,7 @@ export const auth = (state = defaultState, action) => {
 export const login = () =>({type: LOGIN})
 export const logout = () =>({type: LOGOUT})
 export const userData = (data) =>({type: USER_DATA, payload: data})
-// 异步获取用户信息数据，交给 redux 管理，经过装饰器包装，回调函数的参数接受 dispatch 用于派发任务
+// 异步获取用户信息数据，交给 redux 管理，经过装饰器包装，回调函数的参数 dispatch 用于派发任务
 export const getUserData = () => dispatch => {
     axios.get('/data')
         .then(res => {
