@@ -11,7 +11,7 @@ mongoose.connection.on('connected', () => {
 
 // 新增数据模型骨架
 const User = mongoose.model('user', new mongoose.Schema({
-  name: {
+  user: {
     type: String,
     require: true
   },
@@ -22,8 +22,8 @@ const User = mongoose.model('user', new mongoose.Schema({
 }))
 
 // User.create({
-//   name: 'tom',
-//   age: 3
+//   user: 'ifyour',
+//   age: 22
 // }, (err, doc) => {
 //   if (err) {
 //     console.log(err)
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/data', (req, res) => {
-  User.find({}, (err, doc) => {
+  User.findOne({}, (err, doc) => {
     res.json(doc);
   })
 })
