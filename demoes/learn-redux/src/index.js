@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import reducers from './reducer'
 import Auth from './Auth';
 import Dashboard from './Dashboard';
-
+import './config';
 // 使用 redux 提供的 applyMiddleware 来处理异步
 // compose 用来混合 2 个函数
 const store = createStore(reducers, compose(

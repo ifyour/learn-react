@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { addgun, removegun, addgunAsyac } from './index.redux'
+import { addgun, removegun, addgunAsyac } from './index.redux';
 
 // 使用 babel 插件 transform-decorators-legacy , 采用装饰器写法
 @connect(
