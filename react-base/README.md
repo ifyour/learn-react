@@ -1,20 +1,3 @@
-### 预览项目
-1. 克隆项目到本地
-```bash
-git clone https://github.com/ifyour/learn-react.git
-```
-
-2. 安装依赖
-```bash
-cd learn-react/demoes/first-app
-npm install
-```
-
-3. 运行项目
-```bash
-npm start
-```
-
 ### 主要内容
 
 - 如何通过 `create-react-app` 快速创建一个项目
