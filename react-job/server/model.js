@@ -1,41 +1,32 @@
-const app = express();
-const BD_URL = 'mongodb://localhost:27017/imooc';
+const mongoose = require('mongoose');
+const BD_URL = 'mongodb://localhost:27017/imooc-chat';
 
 mongoose.connect(BD_URL);
 mongoose.connection.on('connected', () => {
   console.log('连接 mongodb 成功！！！');
 })
 
-// 新增数据模型骨架
-const User = mongoose.model('user', new mongoose.Schema({
-    user: {
-      type: String,
-      require: true
-    },
-    age: {
-      type: Number,
-      require: true
-    }
-  }))
-  
-  // User.create({
-  //   user: 'ifyour',
-  //   age: 22
-  // }, (err, doc) => {
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(doc)
-  //   }
-  // });
-  
-  app.get('/', (req, res) => {
-    res.send('<h1>Hello, express!!</h1>')
-  })
-  
-  app.get('/data', (req, res) => {
-    User.findOne({}, (err, doc) => {
-      res.json(doc);
-    })
-  })
-  
+const models = {
+  user: {
+    'user': {type: String, require: true},
+    'pwd': {type: String, require: true},
+    'type': {type: String, require: true},
+    'avatar': {type: String},// 头像
+    'desc': {type: String},// 简介
+    'title': {type: String},// 职位
+    'company': {type: String},
+    'money': {type: String}
+  },
+  chat: {}
+}
+
+// 批量创建骨架模型
+for (let m in models) {
+  mongoose.model(m, new mongoose.Schema(models[m]));
+}
+
+module.exports = {
+  getModel(name) {
+    return mongoose.model(name)
+  }
+}

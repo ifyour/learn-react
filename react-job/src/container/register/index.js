@@ -1,5 +1,6 @@
 import React from 'react';
-import Logo from '../../component/logo/logo';
+import { connect } from 'react-redux';
+import { register } from '../../redux/user.redux';
 import {
     List,
     Button,
@@ -8,7 +9,12 @@ import {
     WingBlank,
     WhiteSpace
 } from 'antd-mobile';
-
+import Logo from '../../component/logo/logo';
+import '../../index.css';
+@connect (
+    state => state.user,
+    { register }
+)
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -28,7 +34,7 @@ class Register extends React.Component {
     }
 
     handleRegister() {
-        console.log(this.state)
+        this.props.register(this.state);
     }
 
     render(){
@@ -37,6 +43,7 @@ class Register extends React.Component {
             <div>
                 <Logo />
                 <List>
+                    { this.props.msg ? <p className="err-msg">{ this.props.msg }</p> : null }
                     <InputItem onChange={ v => this.handleChange('user', v) }>用户名</InputItem>
                     <InputItem 
                         onChange={ v => this.handleChange('pwd', v) }

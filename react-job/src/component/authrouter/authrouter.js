@@ -9,9 +9,9 @@ import { withRouter } from 'react-router-dom';
 // 4) 用户是否完善了头像
 
 // 当前组件不是 Route 组件, 所以需要使用 react-touter-dom 中的 withRouter 装饰器
-// 吧路由相关的方法带入到当前组件的属性中
+// 把路由相关的方法带入到当前组件的属性中
 @withRouter
-class AuthRouter extends     React.Component {
+class AuthRouter extends React.Component {
     componentDidMount() {
         const publicList = ['/login', '/register'];
         const pathName = this.props.location.pathname;
