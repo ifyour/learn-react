@@ -5,6 +5,16 @@ const utils = require('./util');
 const model = require('./model');
 const User = model.getModel('user');
 
+Router.post('/login', (req, res) => {
+    const { user, pwd } = req.body;
+    User.findOne({ user, pwd: utils.md5Pwd(pwd) }, {'pwd': 0}, (err, doc) => {
+        if (!doc) {
+            res.json({ code: 1, msg: '用户名不存在或者密码错误' })
+        }
+        return res.json({ code: 0, data: doc})
+    })
+})
+
 Router.post('/register', (req, res)=>{
     const { user, pwd, type } = req.body;
     User.findOne({ user }, (err, doc) => {
