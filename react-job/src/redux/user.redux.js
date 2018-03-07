@@ -42,7 +42,7 @@ export const register = ({ user, pwd, repeatpwd, type }) => {
         return errorMsg('两次密码不一致')
   }
   return dispatch => {
-    axios.post('/user/register', { user, pwd, type })
+    axios.post('/user/register', { user: user.trim(), pwd: pwd.trim(), type })
         .then(res =>{
             if(res.status === 200 && res.data.code === 0) {
                 // 注册成功
