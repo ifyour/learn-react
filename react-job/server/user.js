@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 
+const utils = require('./util');
 const model = require('./model');
 const User = model.getModel('user');
 
@@ -11,7 +12,7 @@ Router.post('/register', (req, res)=>{
             return res.json({code: 1, msg: '用户名已存在'})
         }
     });
-    User.create({ user, pwd, type }, (err, doc) => {
+    User.create({ user, pwd: utils.md5Pwd(pwd), type }, (err, doc) => {
         if (err) {
             res.json({code:1, msg: '服务端错误'})
         }else{

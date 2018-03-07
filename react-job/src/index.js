@@ -5,10 +5,11 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import Login from './container/login/index';
-import Register from './container/register/index';
+import Login from './container/login/login';
+import Register from './container/register/register';
 import reducers from './reducers';
 import './config';
+import './index.css';
 import AuthRouter from './component/authrouter/authrouter';
 
 const store = createStore(reducers, compose(
