@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loadUserInfo } from '../../redux/user.redux';
 
 // AuthRouter 组件主要做登录校验
 // 1) 当前是否登录
@@ -11,6 +13,10 @@ import { withRouter } from 'react-router-dom';
 // 当前组件不是 Route 组件, 所以需要使用 react-touter-dom 中的 withRouter 装饰器
 // 把路由相关的方法带入到当前组件的属性中
 @withRouter
+@connect(
+    null,
+    { loadUserInfo }
+)
 class AuthRouter extends React.Component {
     componentDidMount() {
         const publicList = ['/login', '/register'];
@@ -20,9 +26,14 @@ class AuthRouter extends React.Component {
         }
         axios.get('/user/info')
             .then(res => {
-                if(res.status === 200 && res.data.code === 1) {
-                    // 未登录则跳转至登录页
-                    this.props.history.push('/login');
+                if(res.status === 200 ) {
+                    if (res.data.code === 0) {
+                        // 已登录则 用户的类型相关信息放入 redux state 中
+                        this.props.loadUserInfo(res.data);
+                    } else {
+                        // 未登录则跳转至登录页面
+                        this.props.history.push('/login');
+                    }
                 }
             })
     }

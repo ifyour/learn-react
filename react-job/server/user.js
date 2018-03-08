@@ -26,16 +26,31 @@ Router.post('/register', (req, res)=>{
             return res.json({code: 1, msg: '用户名已存在'})
         }
     });
-    User.create({ user, pwd: utils.md5Pwd(pwd), type }, (err, doc) => {
-        if (err) {
-            res.json({code:1, msg: '服务端错误'})
-        }else{
-            res.json({code:0})
+    // 注册后, 将用户信息存入 redux state 中
+    // create 方法无法获取 _id 信息, 换一种写法
+
+    // User.create({ user, pwd: utils.md5Pwd(pwd), type }, (err, doc) => {
+    //     if (err) {
+    //         res.json({code:1, msg: '服务端错误'})
+    //     }else{
+    //         res.json({code:0})
+    //     }
+    // })
+    const userModel = new User({ user, pwd: utils.md5Pwd(pwd), type  });
+    userModel.save((err, doc) => {
+        if(err) {
+            return res.json({ code: 1, msg: '服务端错误' })
         }
+        const { user, type, _id } = doc;
+        res.cookie('userid', _id);// 注册成功后, 写入 cookie 存储当前用户已登录状态
+        return res.json({ code: 0, data: { user, type, _id } })
     })
 })
 
 Router.get('/list', (req, res) => {
+    // User.remove({}, (err, doc) => {
+    //     return res.json({ code: 0, msg: '删除成功' })
+    // })
     User.find({}, (err, doc)=>res.json(doc))
 })
 
