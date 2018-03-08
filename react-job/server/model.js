@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const Mongoose = require('mongoose');
 const BD_URL = 'mongodb://localhost:27017/imooc-chat';
 
-mongoose.connect(BD_URL);
-mongoose.connection.on('connected', () => {
+Mongoose.connect(BD_URL);
+Mongoose.connection.on('connected', () => {
   console.log('MongoDB connected!');
 })
 
@@ -22,11 +22,11 @@ const models = {
 
 // 批量创建骨架模型
 for (let m in models) {
-  mongoose.model(m, new mongoose.Schema(models[m]));
+  Mongoose.model(m, new Mongoose.Schema(models[m]));
 }
 
 module.exports = {
   getModel(name) {
-    return mongoose.model(name)
+    return Mongoose.model(name)
   }
 }
