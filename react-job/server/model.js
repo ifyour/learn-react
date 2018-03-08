@@ -3,7 +3,7 @@ const BD_URL = 'mongodb://localhost:27017/imooc-chat';
 
 mongoose.connect(BD_URL);
 mongoose.connection.on('connected', () => {
-  console.log('MongoDB connected success!');
+  console.log('MongoDB connected!');
 })
 
 const models = {
