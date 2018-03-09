@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavBar, Icon, InputItem, TextareaItem, Button, WingBlank, WhiteSpace } from 'antd-mobile';
-import AvatarSelector from '../../component/avatar-selector/avatar-selector';
-import { update } from '../../redux/user.redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
+import AvatarSelector from '../../component/avatar-selector/avatar-selector';
+import { update } from '../../redux/user.redux';
 
 @connect(
     state => state.user,

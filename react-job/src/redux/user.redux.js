@@ -55,7 +55,7 @@ export const register = ({ user, pwd, repeatpwd, type }) => {
     axios.post('/user/register', { user: user.trim(), pwd: pwd.trim(), type })
         .then(res =>{
             if(res.status === 200 && res.data.code === 0) {
-                // 注册成功, 触发 registerSuccess 这个action
+                // 注册成功
                 dispatch(updateSuccess({ user, pwd, type }));
             } else {
                 dispatch(errorMsg(res.data.msg))
