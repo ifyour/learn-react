@@ -19,6 +19,21 @@ Router.post('/login', (req, res) => {
     })
 })
 
+Router.post('/update', (req, res) => {
+    const { userid } = req.cookies;
+    // 更新时依然检测是否存在 cookie
+    if (!userid) {
+        return json.dumps({ code: 1 })
+    }
+    const body = req.body;
+    User.findByIdAndUpdate(userid, body, (err, doc) => {
+       const { user, type } = doc;
+       const data = Object.assign({}, { user, type }, body)
+       return res.json({ code: 0, data })
+    })
+})
+
+
 Router.post('/register', (req, res)=>{
     const { user, pwd, type } = req.body;
     User.findOne({ user }, (err, doc) => {
@@ -28,14 +43,6 @@ Router.post('/register', (req, res)=>{
     });
     // 注册后, 将用户信息存入 redux state 中
     // create 方法无法获取 _id 信息, 换一种写法
-
-    // User.create({ user, pwd: utils.md5Pwd(pwd), type }, (err, doc) => {
-    //     if (err) {
-    //         res.json({code:1, msg: '服务端错误'})
-    //     }else{
-    //         res.json({code:0})
-    //     }
-    // })
     const userModel = new User({ user, pwd: utils.md5Pwd(pwd), type  });
     userModel.save((err, doc) => {
         if(err) {

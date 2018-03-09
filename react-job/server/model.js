@@ -12,7 +12,7 @@ const models = {
     'pwd': {type: String, require: true},
     'type': {type: String, require: true},
     'avatar': {type: String},// 头像
-    'desc': {type: String},// 简介
+    'description': {type: String},// 简介
     'title': {type: String},// 职位
     'company': {type: String},
     'money': {type: String}

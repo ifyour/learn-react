@@ -29,7 +29,7 @@ class AuthRouter extends React.Component {
                 if(res.status === 200 ) {
                     if (res.data.code === 0) {
                         // 已登录则 用户的类型相关信息放入 redux state 中
-                        this.props.loadUserInfo(res.data);
+                        this.props.loadUserInfo(res.data.data);
                     } else {
                         // 未登录则跳转至登录页面
                         this.props.history.push('/login');
