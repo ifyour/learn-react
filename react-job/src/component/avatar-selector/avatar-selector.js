@@ -21,7 +21,6 @@ class AvatarSelector extends React.Component {
                             </div>
                         )
                         : '请选择头像'
-
         return (
             <div>
                 <List renderHeader={ ()=> gridHead }>

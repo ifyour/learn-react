@@ -33,7 +33,6 @@ Router.post('/update', (req, res) => {
     })
 })
 
-
 Router.post('/register', (req, res)=>{
     const { user, pwd, type } = req.body;
     User.findOne({ user }, (err, doc) => {
