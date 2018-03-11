@@ -3,3 +3,19 @@
   text-align: center;
   padding-top: 15px;
 }
+
+.am-tab-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.fixed-header.am-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.page-center {
+  padding: 45px 5px;
+}
