@@ -27,9 +27,9 @@ class Boss extends React.Component {
                 <WhiteSpace />
                 {
                     this.state.data.map(v => (
-                    v.avatar ? <Card key={ v._id } full>
+                    v.avatar ? <Card key={v._id}>
                                     <Header 
-                                        title={ v.user }
+                                        title={ v.title }
                                         thumb={ require(`../avatar-selector/images/${v.avatar}.png`) }
                                         extra={ <span>{ v.title }</span> }
                                     ></Header>
@@ -37,7 +37,7 @@ class Boss extends React.Component {
                                          { 
                                             v.description
                                                 .split('\n')
-                                                .map(v => (<div>{ v }</div>))
+                                                .map(v => (<div key={v}>{ v }</div>))
                                          }
                                     </Body>
                                 </Card>

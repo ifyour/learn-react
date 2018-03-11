@@ -38,7 +38,10 @@ class GeniusInfo extends React.Component {
         const currentPath = this.props.location.pathname;
         return (
             <div>
-                { redirectTo && redirectTo !== currentPath ? <Redirect to={ this.props.redirectTo }/> : null }
+                { redirectTo && redirectTo !== currentPath 
+                    ? <Redirect to={ this.props.redirectTo }/> 
+                    : null 
+                }
                 <NavBar mode="dark">牛人完善信息页</NavBar>
                 <AvatarSelector avatarSelector={this.avatarSelector} />
                 <WhiteSpace />

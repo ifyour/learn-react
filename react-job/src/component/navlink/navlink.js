@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 @withRouter
 class NavLink extends React.Component {
-    static PropType = {
+    static propTypes = {
         data: PropType.array.isRequired
     }
 
