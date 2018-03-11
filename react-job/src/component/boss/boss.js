@@ -36,8 +36,8 @@ class Boss extends React.Component {
                                     <Body>
                                          { 
                                             v.description
-                                            .split('\n')
-                                            .map(v => (<div>{ v }</div>))
+                                                .split('\n')
+                                                .map(v => (<div>{ v }</div>))
                                          }
                                     </Body>
                                 </Card>
