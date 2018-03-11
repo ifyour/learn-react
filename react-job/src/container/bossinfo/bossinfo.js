@@ -60,6 +60,7 @@ class BossInfo extends React.Component {
                         onClick={ () => this.props.update(this.state) }
                     >保存</Button>
                 </WingBlank>
+                <WhiteSpace />
             </div>
         )
     }
