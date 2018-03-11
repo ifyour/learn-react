@@ -19,3 +19,7 @@
 .page-center {
   padding: 45px 5px;
 }
+
+.am-card-header-content > img {
+  height: 28px;
+}

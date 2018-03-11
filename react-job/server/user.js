@@ -23,7 +23,7 @@ Router.post('/update', (req, res) => {
     const { userid } = req.cookies;
     // 更新时依然检测是否存在 cookie
     if (!userid) {
-        return json.dumps({ code: 1 })
+        return res.json({ code: 1 })
     }
     const body = req.body;
     User.findByIdAndUpdate(userid, body, (err, doc) => {
@@ -57,7 +57,9 @@ Router.get('/list', (req, res) => {
     // User.remove({}, (err, doc) => {
     //     return res.json({ code: 0, msg: '删除成功' })
     // })
-    User.find({}, (err, doc)=>res.json(doc))
+
+    const { type } = req.query;
+    User.find({ type }, _filter, (err, doc)=>res.json({ code: 0, data: doc }))
 })
 
 Router.get('/info', (req, res) => {
