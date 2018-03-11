@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -19,10 +19,6 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk), 
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
-
-function Boss() {
-    return <h2>BOSS 页面</h2>
-}
 
 ReactDom.render(
     <Provider store={ store }>

@@ -21,7 +21,7 @@ class NavLink extends React.Component {
                             title={ v.text }
                             icon={{ uri: require(`./navimg/${v.icon}.png`) }}
                             selectedIcon={{ uri: require(`./navimg/${v.icon}_select.png`) }}
-                            selected={ pathname == v.path }
+                            selected={ pathname === v.path }
                             onPress={ ()=> this.props.history.push(v.path) }
                         ></TabBar.Item>
                    ))
