@@ -28,13 +28,13 @@ class Dashboard extends React.Component {
                 path: '/boss',
                 text: '牛人',
                 icon: 'boss',
-                title: '寻找牛人',
+                title: '牛人列表',
                 component: Boss,
                 hide: user.type === 'genius'
             },
             {
                 path: '/genius',
-                text: 'BOSS',
+                text: 'BOSS列表',
                 icon: 'genius',
                 title: '寻找 BOSS',
                 component: Genius,
@@ -55,9 +55,12 @@ class Dashboard extends React.Component {
                 component: Me
             }
         ];
+        const curNavItem = navList.find(v => v.path === pathname);
         return (
             <div>
-                <NavBar className="fixed-header" mode="dard">{ navList.find(v => v.path === pathname).title }</NavBar>
+                <NavBar className="fixed-header" mode="dard">
+                    { curNavItem ? curNavItem.title : null }
+                </NavBar>
                 <div className="page-center">
                     <Switch>
                         {

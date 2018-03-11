@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, List } from 'antd-mobile';
 
 class AvatarSelector extends React.Component {
-    static PropTypes = {
+    static propTypes = {
         avatarSelector: PropTypes.func.isRequired
     }
     constructor(props) {

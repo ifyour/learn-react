@@ -59,7 +59,7 @@ Router.get('/list', (req, res) => {
     // })
 
     const { type } = req.query;
-    User.find({ type }, _filter, (err, doc)=>res.json({ code: 0, data: doc }))
+    User.find(type ? {type} : {}, _filter, (err, doc)=>res.json({ code: 0, data: doc }))
 })
 
 Router.get('/info', (req, res) => {
