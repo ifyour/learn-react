@@ -23,7 +23,7 @@ Router.post('/update', (req, res) => {
     const { userid } = req.cookies;
     // 更新时依然检测是否存在 cookie
     if (!userid) {
-        return res.json({ code: 1 })
+        return res.json({ code: 1, msg: '登录超时'})
     }
     const body = req.body;
     User.findByIdAndUpdate(userid, body, (err, doc) => {
