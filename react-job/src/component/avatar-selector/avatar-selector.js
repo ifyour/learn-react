@@ -26,17 +26,15 @@ class AvatarSelector extends React.Component {
                         )
                         : '请选择头像'
         return (
-            <div>
-                <List renderHeader={ ()=> gridHead }>
-                    <Grid data={ avatarList } 
-                        columnNum="5" 
-                        onClick={ elem => {
-                            this.setState(elem)
-                            this.props.avatarSelector(elem.text)
-                        } }
-                    />
-                </List>
-            </div>
+            <List renderHeader={ ()=> gridHead }>
+                <Grid data={ avatarList } 
+                    columnNum="5" 
+                    onClick={ elem => {
+                        this.setState(elem)
+                        this.props.avatarSelector(elem.text)
+                    } }
+                />
+            </List>
         )
     }
 }
