@@ -29,7 +29,7 @@ class Boss extends React.Component {
                     this.state.data.map(v => (
                     v.avatar ? <Card key={v._id}>
                                     <Header 
-                                        title={ v.title }
+                                        title={ v.user }
                                         thumb={ require(`../avatar-selector/images/${v.avatar}.png`) }
                                         extra={ <span>{ v.title }</span> }
                                     ></Header>
