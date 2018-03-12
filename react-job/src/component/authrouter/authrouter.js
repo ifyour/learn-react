@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUserInfo } from '../../redux/user.redux';
-import { getRedirectPath } from '../../util'
+import { getRedirectPath } from '../../utils/util'
 
 // AuthRouter 组件主要做登录校验
 // 1) 当前是否登录

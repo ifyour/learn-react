@@ -5,9 +5,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import './config';
-import './index.css';
-import reducers from './reducers';
+import './config/axios.config';
+import './style/index.css';
+import reducers from './redux';
 import Login from './container/login/login';
 import Register from './container/register/register';
 import BossInfo from './container/bossinfo/bossinfo';

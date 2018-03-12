@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getRedirectPath } from '../util';
+import { getRedirectPath } from '../utils/util';
 
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
