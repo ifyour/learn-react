@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { getRedirectPath } from '../utils/util';
 
+// action type
+// ----------------------------------------
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
 const LOAD_DATA = 'LOAD_DATA';

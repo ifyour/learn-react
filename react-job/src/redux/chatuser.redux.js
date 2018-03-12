@@ -1,6 +1,9 @@
 import axios from 'axios';
 
+// action type
+// -------------------------------------------
 const USER_LIST = 'USER_LIST';
+
 const initState = {
     userList: []
 }
