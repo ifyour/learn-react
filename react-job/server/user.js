@@ -65,7 +65,7 @@ Router.get('/list', (req, res) => {
 Router.get('/info', (req, res) => {
     const { userid } = req.cookies;
     if (!userid) {
-        return res.json({code: 1})
+        return res.json({code: 1, msg: '登录超时'})
     }
     User.findOne({ _id: userid }, _filter, (err, doc) =>{
         if (err) {
