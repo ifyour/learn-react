@@ -23,11 +23,9 @@ class UserCard extends React.Component {
                                         extra={ <span>{ v.title }</span> }
                                     ></Header>
                                     <Body>
-                                        { 
-                                            v.description
-                                                .split('\n')
-                                                .map(d => (<div key={d}>{ d }</div>))
-                                        }
+                                        { v.description.split('\n').map(d => (<div key={d}>{ d }</div>)) }
+                                        { v.money ? <div>{ v.money }</div> : null }
+                                        { v.company ? <div>{ v.company }</div> : null }
                                     </Body>
                                 </Card>
                             : null
