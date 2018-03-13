@@ -5,10 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import NavLink from '../navlink/navlink';
 import Boss from '../boss/boss';
+import Genius from '../genius/genius';
 
-function Genius() {
-    return <h2>Genius 首页</h2>
-}
 function Msg() {
     return <h2>Msg</h2>
 }
@@ -26,17 +24,17 @@ class Dashboard extends React.Component {
         const navList = [
             {
                 path: '/boss',
-                text: '牛人',
+                text: '牛人',// TabBar 文字
                 icon: 'boss',
-                title: '牛人列表',
+                title: '牛人列表',// NavBar 标题
                 component: Boss,
                 hide: user.type === 'genius'
             },
             {
                 path: '/genius',
-                text: 'BOSS列表',
+                text: 'BOSS',
                 icon: 'genius',
-                title: '寻找 BOSS',
+                title: 'BOSS 列表',
                 component: Genius,
                 hide: user.type === 'boss'
             },

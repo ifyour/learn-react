@@ -10,7 +10,7 @@ import UserCard from '../../component/usercard/usercard';
 )
 class Boss extends React.Component {
     componentDidMount() {
-        this.props.getUserList('genius');
+        this.props.getUserList('boss');
     }
     render() {
         return <UserCard userList={ this.props.userList }></UserCard>
