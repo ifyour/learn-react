@@ -46,7 +46,7 @@ class User extends React.Component {
                         { this.props.money ? <Brief>{ this.props.money }</Brief> : null}
                     </Item>
                 </List>
-                <WhiteSpace></WhiteSpace>
+                <WhiteSpace />
                 <List>
                     <Item onClick={ this.logout }>退出登录</Item>
                 </List>
