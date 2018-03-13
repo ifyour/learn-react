@@ -6,14 +6,11 @@ import { Switch, Route } from 'react-router-dom';
 import NavLink from '../navlink/navlink';
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
+import User from '../user/user';
 
 function Msg() {
     return <h2>Msg</h2>
 }
-function Me() {
-    return <h2>Me</h2>
-}
-
 @connect(
     state => state
 )
@@ -50,7 +47,7 @@ class Dashboard extends React.Component {
                 text: '我',
                 icon: 'user',
                 title: '个人中心',
-                component: Me
+                component: User
             }
         ];
         const curNavItem = navList.find(v => v.path === pathname);

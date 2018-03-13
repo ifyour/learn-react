@@ -2,12 +2,12 @@ import React from 'react';
 import Logo from '../../component/logo/logo';
 import { connect } from 'react-redux';
 import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
-import { login } from '../../redux/user.redux';
+import { login, registerSubmit } from '../../redux/user.redux';
 import { Redirect } from 'react-router-dom';
 
 @connect(
     state => state.user,
-    { login }
+    { login, registerSubmit }
 )
 class Login extends React.Component {
     constructor(props){
@@ -25,7 +25,7 @@ class Login extends React.Component {
     }
 
     handleRegister() {
-        this.props.history.push('/register')
+        this.props.registerSubmit();
     }
 
     handleChange(key, value) {
@@ -37,7 +37,7 @@ class Login extends React.Component {
     render(){
         return (
             <div>
-                { this.props.redirectTo ? <Redirect to={ this.props.redirectTo } /> : null }
+                { this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={ this.props.redirectTo } /> : null }
                 <Logo />
                 { this.props.msg ? <p className="err-msg">{ this.props.msg }</p> : null }
                 <List>

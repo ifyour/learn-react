@@ -6,6 +6,8 @@ import { getRedirectPath } from '../utils/util';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
 const LOAD_DATA = 'LOAD_DATA';
+const LOGOUT = 'LOGOUT';
+const LOGIN = 'LOGIN';
 
 const initState = {
     redirectTo: '',
@@ -24,6 +26,10 @@ export const user = (state = initState, action) => {
         return { ...state, ...action.payload }
     case ERROR_MSG:
         return { ...state, msg: action.msg }
+    case LOGOUT:
+        return { ...initState, redirectTo: '/login' }
+    case LOGIN:
+        return { ...initState, redirectTo: '/register' }
     default:
         return state;
   }
@@ -34,6 +40,8 @@ export const user = (state = initState, action) => {
 export const errorMsg = msg => ({msg, type: ERROR_MSG})
 export const loadUserInfo = (userinfo) =>({ payload: userinfo, type: LOAD_DATA })
 export const updateSuccess = (data) => ({ payload: data, type: AUTH_SUCCESS })
+export const logoutSubmit  = () =>({ type: LOGOUT })
+export const registerSubmit  = () =>({ type: LOGIN })
 
 export const update = (data) => (dispatch) => {
     axios.post('/user/update', data)
