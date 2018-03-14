@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem } from 'antd-mobile';
+import { List, InputItem, NavBar } from 'antd-mobile';
 import { connect } from 'react-redux';
 
 import { getMsgList, sendMsg, recvMsg } from '../../redux/chat.redux';
@@ -28,9 +28,16 @@ class Chat extends React.Component {
     }
 
     render() {
+        const toUser = this.props.match.params.user;
+        const Item = List.Item;
         return (
-            <div>
-                { this.props.chat.chatmsg.map((v,i)=><p key={i}>{ v.content }</p>) }
+            <div id="chat-page">
+                <NavBar mode="dark">{ this.props.match.params.user }</NavBar>
+                { this.props.chat.chatmsg.map(v => {
+                    return v.from !== toUser 
+                            ? <List key={v._id}><Item className="chat-me">{v.content}</Item></List>
+                            : <List key={v._id}><Item>{v.content}</Item></List>
+                }) }
                  <div className="stick-footer">
                     <List>
                         <InputItem 

@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 
 const model = require('./model');
 const Chat = model.getModel('chat');
-
+// Chat.remove({}, (err, doc)=>{})
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);

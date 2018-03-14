@@ -28,12 +28,16 @@
   height: 53px!important;
 }
 
+#chat-page {
+  padding-bottom: 45px;
+}
+
 #chat-page .chat-me .am-list-extra {
   flex-basis: auto;
 }
 
-#chat-page .chat-me .am-list-extra-content {
-  padding-right: 15px;
+#chat-page .chat-me .am-list-content {
+  padding-right: 25px;
   text-align: right;
 }
 
@@ -43,5 +47,3 @@
   bottom: 0;
   width: 100%;
 }
-
-
