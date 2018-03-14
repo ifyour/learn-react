@@ -9,14 +9,15 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-
+// io 是 socket.io 全局实例
 io.on('connection', (curSocket)=>{
+  // curSocket 当前连接实例
   curSocket.on('sendMsg', (data)=>{
     const { from, to, msg } = data;
     const chatid = [from, to].sort().join('_');
-
     Chat.create({ chatid, from, to, content: msg }, (err, doc) =>{
         if (!err) {
+            // 全局广播所有监听 receiveMsg 的实例，并且接受参数
             io.emit('receiveMsg', Object.assign({}, doc._doc));
         }
     })

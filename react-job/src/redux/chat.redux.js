@@ -15,7 +15,7 @@ const initState = {
 
 // reducer
 // -------------------------------------------
-export const chat = (state=initState, action) => {
+export const chat = (state = initState, action) => {
     switch(action.type) {
         case MSG_LIST:
             return { ...state, chatmsg: action.payload, unread: action.payload.filter(v=>!v.read).length  }
@@ -46,7 +46,7 @@ export const sendMsg = ({ from, to , msg }) => dispatch => {
 }
 // 接收消息
 export const recvMsg = () => dispatch => {
-    curSocket.on('receiveMsg', (msg)=> {
+    curSocket.on('receiveMsg', msg => {
         dispatch(msgRecv(msg))
     })
 }

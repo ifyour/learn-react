@@ -18,10 +18,10 @@ const models = {
     'money': {type: String}
   },
   chat: {
-    'chatid': {type: String, require: true},
-    'from': {type: String, require: true},
-    'to': {type: String, require: true},
-    'read': {type: Boolean, default: false},
+    'chatid': {type: String, require: true},// 消息 id
+    'from': {type: String, require: true},// 发送方 id
+    'to': {type: String, require: true},// 接收方 id
+    'read': {type: Boolean, default: false},// 是否已读
     'content': {type: String, require: true, default: ''},
     'create_time': {type: String, default: Date.now()}
   }
