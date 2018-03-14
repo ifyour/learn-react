@@ -39,7 +39,7 @@ class User extends React.Component {
                     title={ this.props.user }
                     message={ this.props.type === 'boss' ? this.props.company : null }
                 />
-                <List renderHeader={ ()=>'招聘职位' }>
+                <List renderHeader={ ()=>'简介' }>
                     <Item multipleLine>
                         { this.props.title }
                         { this.props.description.split('\n').map( v=><Brief key={v}>{v}</Brief>) }

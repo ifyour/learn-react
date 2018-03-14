@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import NavLink from '../navlink/navlink';
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
-import User from '../user/user';
+import UserCenter from '../usercenter/usercenter';
 
 function Msg() {
     return <h2>Msg</h2>
@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
                 text: '我',
                 icon: 'user',
                 title: '个人中心',
-                component: User
+                component: UserCenter
             }
         ];
         const curNavItem = navList.find(v => v.path === pathname);
