@@ -4,6 +4,7 @@ const Router = express.Router();
 const utils = require('./util');
 const model = require('./model');
 const User = model.getModel('user');
+const Chat = model.getModel('chat');
 
 // 过滤掉一些不想展示的字段
 const _filter = {'pwd': 0, '__v': 0};
@@ -16,6 +17,15 @@ Router.post('/login', (req, res) => {
         }
         res.cookie('userid', doc._id);
         return res.json({ code: 0, data: doc})
+    })
+})
+
+Router.get('/msglist', (req, res) => {
+    const userid = req.cookies.userid;
+    Chat.find({}, (err, doc) => {
+        if (!err) {
+            return res.json({ code: 0, msgs: doc })
+        }
     })
 })
 

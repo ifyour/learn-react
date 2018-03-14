@@ -27,3 +27,21 @@
 .am-tab-bar {
   height: 53px!important;
 }
+
+#chat-page .chat-me .am-list-extra {
+  flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-extra-content {
+  padding-right: 15px;
+  text-align: right;
+}
+
+.stick-footer {
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
