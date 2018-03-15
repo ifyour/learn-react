@@ -19,9 +19,14 @@ const initState = {
 export const chat = (state = initState, action) => {
     switch(action.type) {
         case MSG_LIST:
-            return { ...state, users: action.payload.users, chatmsg: action.payload.msgs, unread: action.payload.msgs.filter(v=>!v.read).length  }
+            return { ...state, 
+                users: action.payload.users, 
+                chatmsg: action.payload.msgs, 
+                unread: action.payload.msgs.filter(v=>!v.read && v.to === action.payload.userid).length // 未读 && 发送给我的
+            }
         case MSG_RECV:
-            return { ...state, chatmsg:[...state.chatmsg, action.payload], unread: state.unread + 1 }
+            const n = action.payload.msg.to === action.payload.userid ? 1 : 0; // 发送给我的 + 1
+            return { ...state, chatmsg:[...state.chatmsg, action.payload.msg], unread: state.unread + n }
         default:
             return state;
     }
@@ -29,15 +34,18 @@ export const chat = (state = initState, action) => {
 
 // action
 // -------------------------------------------
-export const msgLisg = (msgs, users) => ({ type: MSG_LIST, payload: { msgs, users } })
-export const msgRecv = msg =>({ type: MSG_RECV, payload: msg })
+export const msgLisg = (msgs, users, userid) => ({ type: MSG_LIST, payload: { msgs, users, userid } })
+export const msgRecv = (msg, userid) =>({ type: MSG_RECV, payload: { msg, userid } })
 
 // 从数据库中获取 msg 列表
-export const getMsgList = () => dispatch => {
+export const getMsgList = () => (dispatch, getState) => {
     axios.get('/user/msglist')
         .then(res => {
             if (res.status === 200 && res.data.code === 0) {
-                dispatch(msgLisg(res.data.msgs, res.data.users))
+                const msgs = res.data.msgs;// 与我有关的消息列表
+                const users = res.data.users;// 所有用户的名称和头像数据
+                const userid = getState().user._id;// 当前已登录用户
+                dispatch(msgLisg(msgs, users, userid))
             }
         })
 }
@@ -48,9 +56,10 @@ export const sendMsg = ({ from, to , msg }) => dispatch => {
 }
 
 // 接收消息
-export const recvMsg = () => dispatch => {
+export const recvMsg = () => (dispatch, getState) => {
+    const userid = getState().user._id;
     socket.on('receiveMsg', msg => {
-        dispatch(msgRecv(msg))
+        dispatch(msgRecv(msg, userid))
     })
 }
 
