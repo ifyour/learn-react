@@ -16,10 +16,8 @@ class Chat extends React.Component {
     }
 
     componentWillMount() {
-        const toUserId = this.props.match.params.user;
-        const users = this.props.chat.users;// 所有用户头像数据
-        // 从未进入过 dashboard
-        if (!this.props.chat.chatmsg.length && !users[toUserId]) {
+        // 从未进入过 dashboard (chatmsg 和 users 都不存在)
+        if (!this.props.chat.chatmsg.length && !Object.keys(this.props.chat.users).length) {
             this.props.getMsgList();
             this.props.recvMsg();
         }
