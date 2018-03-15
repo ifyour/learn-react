@@ -5,10 +5,11 @@ import { Result, List, WhiteSpace, Modal } from 'antd-mobile';
 import { Redirect } from 'react-router-dom';
 
 import { logoutSubmit } from '../../redux/user.redux';
+import { removeRecvMsg } from '../../redux/chat.redux';
 
 @connect(
     state => state.user,
-    { logoutSubmit }
+    { logoutSubmit, removeRecvMsg }
 )
 class User extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class User extends React.Component {
             { text: '确认', onPress: () => {
                 browserCookies.erase('userid')
                 this.props.logoutSubmit();
+                this.props.removeRecvMsg();// 结束消息监听
             } }
           ])
     }

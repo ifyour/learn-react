@@ -20,11 +20,23 @@ Router.post('/login', (req, res) => {
     })
 })
 
+// 获取当前用户的消息列表
 Router.get('/msglist', (req, res) => {
-    const userid = req.cookies.userid;
-    Chat.find({}, (err, doc) => {
+    const userid = req.cookies.userid;// 当前登录用户
+    let users = {};
+    // 遍历出所有用户对应的用户名和头像
+    // find 查找是一个异步操作, 这里要规避先后问题
+    User.find({}, (err, doc) =>{
         if (!err) {
-            return res.json({ code: 0, msgs: doc })
+            doc.forEach(v=>{
+                users[v._id] = { name: v.user, avatar: v.avatar }
+            })
+            // 查找与我有关的消息 '$or' 接收一个数组, 包含多个查询条件
+            Chat.find({ '$or': [ {from: userid },{ to: userid } ] }, (err, doc) => {
+                if (!err) {
+                    return res.json({ code: 0, msgs: doc, users })
+                }
+            })
         }
     })
 })

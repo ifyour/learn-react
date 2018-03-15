@@ -1,12 +1,13 @@
 import React from 'react';
-import { List, InputItem, NavBar } from 'antd-mobile';
+import { List, InputItem, NavBar, Icon } from 'antd-mobile';
 import { connect } from 'react-redux';
 
-import { getMsgList, sendMsg, recvMsg } from '../../redux/chat.redux';
+import { getMsgList, sendMsg, recvMsg, removeRecvMsg } from '../../redux/chat.redux';
+import { getChatAboutMe } from '../../utils/util';
 
 @connect(
     state=>state,
-    { getMsgList, sendMsg, recvMsg }
+    { getMsgList, sendMsg, recvMsg, removeRecvMsg }
 )
 class Chat extends React.Component {
     
@@ -14,29 +15,47 @@ class Chat extends React.Component {
         text: ''
     }
 
-    componentDidMount() {
-       this.props.getMsgList();
-       this.props.recvMsg();
+    componentWillMount() {
+        // 如果该页还未获取到用户列表消息
+        if (!this.props.chat.chatmsg.length) {
+            this.props.getMsgList();
+            this.props.recvMsg();
+        }
+    }
+
+    componentWillUnmount() {
+        // 该页销毁时, 清除当页的消息监听
+        this.props.removeRecvMsg()
     }
 
     handleSubmit() {
         const from = this.props.user._id;
         const to = this.props.match.params.user;
         const msg = this.state.text;
-        this.props.sendMsg({ from,to, msg } );
+        msg && this.props.sendMsg({ from, to, msg });
         this.setState({ text: '' })
     }
 
     render() {
-        const toUser = this.props.match.params.user;
+        const toUserId = this.props.match.params.user;
+        const users = this.props.chat.users;
         const Item = List.Item;
+        if (!users[toUserId]) {// 所有用户中未找到当前用户信息
+            return null
+        }
+        const chatMsg = this.props.chat.chatmsg.filter(v=>v.chatid === getChatAboutMe(this.props.user._id, toUserId))
         return (
             <div id="chat-page">
-                <NavBar mode="dark">{ this.props.match.params.user }</NavBar>
-                { this.props.chat.chatmsg.map(v => {
-                    return v.from !== toUser 
-                            ? <List key={v._id}><Item className="chat-me">{v.content}</Item></List>
-                            : <List key={v._id}><Item>{v.content}</Item></List>
+                <NavBar 
+                    mode="dark"
+                    icon={ <Icon type="left"></Icon> }
+                    onLeftClick={ ()=>this.props.history.goBack() }
+                >{ users[toUserId].name }</NavBar>
+                { chatMsg.map(v => {
+                    const avatarURL = require(`../avatar-selector/images/${users[v.from].avatar}.png`)
+                    return v.from !== toUserId
+                            ? <List key={v._id}><Item className="chat-me" extra={<img src={ avatarURL } alt=""/>}>{v.content}</Item></List>
+                            : <List key={v._id}><Item thumb={ avatarURL }>{v.content}</Item></List>
                 }) }
                  <div className="stick-footer">
                     <List>
