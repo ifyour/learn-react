@@ -7,3 +7,9 @@ export const getRedirectPath = ({ type, avatar }) => {
     if (!avatar) url += 'info';
     return url;
 }
+/**
+ * 获取与我有关的所有消息
+ * @param {String} fromID 消息发送方 ID
+ * @param {String} targetID 消息接收方 ID
+ */
+export const getChatAboutMe = (fromID, targetID) => [fromID, targetID].sort().join('_');

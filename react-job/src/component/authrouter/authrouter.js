@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUserInfo } from '../../redux/user.redux';
-import { getRedirectPath } from '../../utils/util'
+// import { getRedirectPath } from '../../utils/util'
 
 // AuthRouter 组件主要做登录校验
 // 1) 当前是否登录
@@ -19,7 +19,7 @@ import { getRedirectPath } from '../../utils/util'
     { loadUserInfo }
 )
 class AuthRouter extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         const publicList = ['/login', '/register'];
         const pathName = this.props.location.pathname;
         if (publicList.indexOf(pathName) > -1) {
