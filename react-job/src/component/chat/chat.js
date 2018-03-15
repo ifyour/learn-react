@@ -43,6 +43,7 @@ class Chat extends React.Component {
         if (!users[toUserId]) {// 所有用户中未找到当前用户信息
             return null
         }
+        // 过滤只要和当前正在聊天的用户的数据
         const chatMsg = this.props.chat.chatmsg.filter(v=>v.chatid === getChatAboutMe(this.props.user._id, toUserId))
         return (
             <div id="chat-page">
