@@ -11,16 +11,20 @@ React 学习仓库, 主要存放 Demo 和一些笔记.
 ### Usage
 
 ```
-# 切换到项目目录
+# 切换目录
 cd $project-directory$
 
 # 安装依赖
 yarn
 
-# 运行
-# server 端(如果有)
+# 启动服务端(需要启用 MongoDB 服务)
 node server/server.js
+
+# 开发
 yarn start
+
+# 构建
+yarn build
 ```
 
 ### License
