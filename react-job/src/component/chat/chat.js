@@ -88,7 +88,7 @@ class Chat extends React.Component {
                                             this.fixCarousel();
                                             this.setState({ showEmoji: !this.state.showEmoji })
                                         } }
-                                    >😍</span>
+                                    >😀</span>
                                     <span onClick={ ()=>this.handleSubmit() }>发送</span>
                                 </div>
                             }

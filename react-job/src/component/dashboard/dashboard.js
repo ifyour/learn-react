@@ -10,7 +10,6 @@ import UserCenter from '../usercenter/usercenter';
 import Msg from '../msg/msg'
 import { getMsgList, recvMsg } from '../../redux/chat.redux';
 
-
 @connect(
     state => state,
     { getMsgList, recvMsg }
