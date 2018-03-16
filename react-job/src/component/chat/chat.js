@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem, NavBar, Icon } from 'antd-mobile';
+import { List, InputItem, NavBar, Icon, Grid } from 'antd-mobile';
 import { connect } from 'react-redux';
 
 import { getMsgList, sendMsg, recvMsg, removeRecvMsg } from '../../redux/chat.redux';
@@ -12,7 +12,8 @@ import { getChatAboutMe } from '../../utils/util';
 class Chat extends React.Component {
     
     state = {
-        text: ''
+        text: '',
+        showEmoji: false
     }
 
     componentWillMount() {
@@ -37,7 +38,17 @@ class Chat extends React.Component {
         this.setState({ text: '' })
     }
 
+    fixCarousel() {
+        setTimeout(()=>{
+            window.dispatchEvent(new Event('resize'));
+        }, 0)
+    }
+
     render() {
+        const emoji = "⊙▂⊙|⊙０⊙|⊙︿⊙|⊙ω⊙|⊙﹏⊙|⊙△⊙|⊙▽⊙|∩▂∩|∩０∩|∩︿∩|∩ω∩|∩﹏∩|∩△∩|∩▽∩|●▂●||●０●||●︿●||●ω●||●﹏●||●△● |●▽●|∪▂∪|∪０∪|∪︿∪|∪ω∪|∪﹏∪|∪△∪|∪▽∪|≧▂≦|≧０≦|≧︿≦|≧ω≦|≧﹏≦|≧△≦|≧▽≦|＞▂＜|＞０＜|＞︿＜|＞ω＜|＞﹏＜|＞△＜|＞▽＜|╯▂╰|╯０╰|╯︿╰|╯ω╰|╯﹏╰|╯△╰|╯▽╰|＋▂＋|＋０＋|＋︿＋|＋ω＋|＋﹏＋ ＋△＋|＋▽＋|ˋ▂ˊ|ˋ０ˊ|ˋ︿ˊ|ˋωˊ|ˋ﹏ˊ|ˋ△ˊ|ˋ▽ˊ|ˇ▂ˇ|ˇ０ˇ|ˇ︿ˇ|ˇωˇ|ˇ﹏ˇ||ˇ△ˇ|ˇ▽ˇ|˙▂˙|˙０˙|˙︿˙|˙ω˙|˙﹏˙|˙△˙|˙▽˙"
+            .split('|')
+            .filter(v=>v)
+            .map(v=> ({ text: v }));
         const toUserId = this.props.match.params.user;
         const users = this.props.chat.users;
         const Item = List.Item;
@@ -65,9 +76,34 @@ class Chat extends React.Component {
                             placeholder="请输入信息"
                             value={ this.state.text }
                             onChange={ v=>this.setState({ text: v }) }
-                            extra={ <span onClick={ ()=>this.handleSubmit() }>发送</span> }
+                            extra={ 
+                                <div>
+                                    <span style={ {marginRight: '10px'} } 
+                                        role="img"
+                                        onClick={ ()=>{
+                                            this.fixCarousel();
+                                            this.setState({ showEmoji: !this.state.showEmoji })
+                                        } }
+                                    > 😍 </span>
+                                    <span onClick={ ()=>this.handleSubmit() }>发送</span>
+                                </div>
+                            }
                         ></InputItem>
                     </List>
+                    {
+                        this.state.showEmoji
+                            ?  <Grid data={ emoji } 
+                                     columnNum={ 9 } 
+                                     isCarousel={ true } 
+                                     carouselMaxRow={ 4 }
+                                     onClick={ el=>{
+                                         this.setState({
+                                             text: this.state.text + el.text
+                                         })
+                                     } }
+                                />
+                            : null
+                    }
                 </div>
             </div>
         )

@@ -57,8 +57,8 @@ export const sendMsg = ({ from, to , msg }) => dispatch => {
 
 // 接收消息
 export const recvMsg = () => (dispatch, getState) => {
-    const userid = getState().user._id;
     socket.on('receiveMsg', msg => {
+        const userid = getState().user._id;
         dispatch(msgRecv(msg, userid))
     })
 }
