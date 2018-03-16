@@ -10,21 +10,21 @@ React 学习仓库, 主要存放 Demo 和一些笔记.
 - [react-job](./react-job): 实战项目, 前端 React + React Router 4 + Redux + Antd-mobile, 后端 Node.js + MongoDB
 ### Usage
 
-```
+```bash
 # 切换目录
-cd $project-directory$
+$ cd $project-directory$
 
 # 安装依赖
-yarn
+$ yarn
 
 # 启动服务端(需要启用 MongoDB 服务)
-node server/server.js
+$ node server/server.js
 
 # 开发
-yarn start
+$ yarn start
 
 # 构建
-yarn build
+$ yarn build
 ```
 
 ### License
