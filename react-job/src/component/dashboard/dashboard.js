@@ -19,8 +19,8 @@ function Msg() {
 class Dashboard extends React.Component {
 
     componentDidMount() {
-        this.props.getMsgList();
-        this.props.recvMsg();
+        this.props.getMsgList();// 获取与我相关的所有消息和所有用户头像数据
+        this.props.recvMsg();// 开始监听 socket 接收消息事件
     }
 
     render(){

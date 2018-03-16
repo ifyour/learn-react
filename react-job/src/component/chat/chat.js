@@ -16,9 +16,9 @@ class Chat extends React.Component {
     }
 
     componentWillMount() {
+        // 如果用户头像数据为空, 那么说明还未获取过消息列表数据
         const users = this.props.chat.users;
-        // 从未进入过 dashboard (chatmsg 和 users 都不存在)
-        if (!this.props.chat.chatmsg.length && !Object.keys(users).length) {
+        if (!Object.keys(users).length) {
             this.props.getMsgList();
             this.props.recvMsg();
         }
