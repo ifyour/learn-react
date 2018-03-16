@@ -2,12 +2,12 @@ import React from 'react';
 import { List, InputItem, NavBar, Icon, Grid } from 'antd-mobile';
 import { connect } from 'react-redux';
 
-import { getMsgList, sendMsg, recvMsg, removeRecvMsg } from '../../redux/chat.redux';
+import { getMsgList, sendMsg, recvMsg, removeRecvMsg, setReadMsg } from '../../redux/chat.redux';
 import { getChatAboutMe } from '../../utils/util';
 
 @connect(
     state=>state,
-    { getMsgList, sendMsg, recvMsg, removeRecvMsg }
+    { getMsgList, sendMsg, recvMsg, removeRecvMsg, setReadMsg }
 )
 class Chat extends React.Component {
     
@@ -28,6 +28,9 @@ class Chat extends React.Component {
     componentWillUnmount() {
         // 该页销毁时, 清除当页的消息监听
         this.props.removeRecvMsg()
+        // 离开当前页的时候, 把当前页的消息标记为已读
+        const curChatTarget = this.props.match.params.user;
+        this.props.setReadMsg(curChatTarget);
     }
 
     handleSubmit() {
@@ -80,11 +83,12 @@ class Chat extends React.Component {
                                 <div>
                                     <span style={ {marginRight: '10px'} } 
                                         role="img"
+                                        aria-labelledby="jsx-a11y/accessible-emoji"
                                         onClick={ ()=>{
                                             this.fixCarousel();
                                             this.setState({ showEmoji: !this.state.showEmoji })
                                         } }
-                                    > 😍 </span>
+                                    >😍</span>
                                     <span onClick={ ()=>this.handleSubmit() }>发送</span>
                                 </div>
                             }

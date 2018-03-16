@@ -9,6 +9,7 @@ const Chat = model.getModel('chat');
 // 过滤掉一些不想展示的字段
 const _filter = {'pwd': 0, '__v': 0};
 
+// 登录
 Router.post('/login', (req, res) => {
     const { user, pwd } = req.body;
     User.findOne({ user, pwd: utils.md5Pwd(pwd) }, _filter, (err, doc) => {
@@ -41,6 +42,26 @@ Router.get('/msglist', (req, res) => {
     })
 })
 
+// 标记指定消息为已读
+Router.post('/readmsg', (req, res) => {
+    const { from } = req.body;// 消息发送方
+    const to = req.cookies.userid;// 消息接收方
+   Chat.update(
+       { from, to }, // 更新条件
+       {'$set': { read: true }}, // 修改属性
+       {'multi': true },// 修改检索出的所有数据, 不加默认修改找到的第一条
+       (err, doc) =>{
+       if (!err) {
+            //doc => { n: 3, nModified: 2, ok: 1 } 
+            // n 满足条件多少条 nModified 影响多少条 ok操作成功
+            return res.json({ code: 0 , num: doc.nModified })
+       } else {
+           return res.json({ code: 1, msg: '修改失败' })
+       }
+   })
+})
+
+// 获取当前登录用户信息
 Router.post('/update', (req, res) => {
     const { userid } = req.cookies;
     // 更新时依然检测是否存在 cookie
@@ -55,6 +76,7 @@ Router.post('/update', (req, res) => {
     })
 })
 
+// 注册
 Router.post('/register', (req, res)=>{
     const { user, pwd, type } = req.body;
     User.findOne({ user }, (err, doc) => {
@@ -75,6 +97,7 @@ Router.post('/register', (req, res)=>{
     })
 })
 
+// 获取用户列表, type: genius|boss
 Router.get('/list', (req, res) => {
     // User.remove({}, (err, doc) => {
     //     return res.json({ code: 0, msg: '删除成功' })
@@ -84,6 +107,7 @@ Router.get('/list', (req, res) => {
     User.find(type ? {type} : {}, _filter, (err, doc)=>res.json({ code: 0, data: doc }))
 })
 
+// 获取用户信息
 Router.get('/info', (req, res) => {
     const { userid } = req.cookies;
     if (!userid) {

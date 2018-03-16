@@ -25,7 +25,7 @@ class Msg extends React.Component {
         })
         // 把对象的 value 取出来保存数组
         const chatList = Object.values(msgGroup);
-        
+        // 按消息接收最新的排序靠前
         chatList.sort((a, b) => {
             const a_last = this._getLast(a).create_time;
             const b_last = this._getLast(b).create_time;
@@ -38,7 +38,7 @@ class Msg extends React.Component {
                         const lastItem = this._getLast(v);
                         const targetId = lastItem.from === userId ? lastItem.to : lastItem.from;
                         const unreadNum = v.filter(v=>!v.read && v.to === userId).length;
-                        if (!Object.keys(userInfo[targetId]).length) {
+                        if (!Object.keys(userInfo[targetId]).length) {// 未获取到用户数据
                             return null
                         }
                         const name = userInfo[targetId].name || '';
