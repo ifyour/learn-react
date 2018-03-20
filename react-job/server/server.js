@@ -5,7 +5,6 @@ const path = require('path');
 
 const model = require('./model');
 const Chat = model.getModel('chat');
-// Chat.remove({}, (err, doc)=>{})
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -31,21 +30,17 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use('/user', userRouter);
 
-// 路由拦截操作，用于服务端配置上线-------start
-
+// 路由拦截操作，用于服务端配置上线
 app.use((req, res, next) => {
-  // 如果访问的是 user || static name继续执行下一个中间件，否则就相应首页
+  // 如果访问的是 user || static 那么继续执行下一个中间件，否则就相应首页
   if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
     return next();
   }
-  // path.resolve 设置为项目绝对路径
+  // path.resolve 转为物理绝对路径
   return res.sendFile(path.resolve('build/index.html'));
 })
-
 // 把 build 目录设置为静态资源目录
 app.use('/', express.static(path.resolve('build')));
-
-// 路由拦截操作，用于服务端配置上线-------end
 
 
 server.listen(9093, () => {
