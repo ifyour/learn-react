@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
             }
         ];
         // 查找出当前 Nav
-        const curNavItem = navList.find(v => v.path === pathname);
+        const curNavItem = navList.find(v => v.path === pathname) || false;
         return (
             <div>
                 <NavBar className="fixed-header" mode="dard">
@@ -66,7 +66,14 @@ class Dashboard extends React.Component {
                 </NavBar>
                 <div className="page-center">
                     <QueueAnim delay={ 100 } type="alpha">
-                        <Route key={ curNavItem.path } path={ curNavItem.path } component={ curNavItem.component } ></Route>
+                        {
+                            curNavItem && 
+                            <Route 
+                                key={ curNavItem.path } 
+                                path={ curNavItem.path } 
+                                component={ curNavItem.component } 
+                            ></Route>
+                        }
                     </QueueAnim>
                 </div>
                 <NavLink data={ navList }></NavLink>
