@@ -17,7 +17,8 @@
 }
 
 .page-center {
-  padding: 45px 5px;
+  margin-top: 45px;
+  overflow: hidden;
 }
 
 .am-card-header-content > img {

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
 import { Switch, Route } from 'react-router-dom';
+import QueueAnim from 'rc-queue-anim';
 
 import NavLink from '../navlink/navlink';
 import Boss from '../boss/boss';
@@ -56,6 +57,7 @@ class Dashboard extends React.Component {
                 component: UserCenter
             }
         ];
+        // 查找出当前 Nav
         const curNavItem = navList.find(v => v.path === pathname);
         return (
             <div>
@@ -63,13 +65,9 @@ class Dashboard extends React.Component {
                     { curNavItem ? curNavItem.title : null }
                 </NavBar>
                 <div className="page-center">
-                    <Switch>
-                        {
-                            navList.map(v=>(
-                                <Route key={ v.path } path={ v.path } component={ v.component } ></Route>
-                            ))
-                        }
-                    </Switch>
+                    <QueueAnim delay={ 100 } type="alpha">
+                        <Route key={ curNavItem.path } path={ curNavItem.path } component={ curNavItem.component } ></Route>
+                    </QueueAnim>
                 </div>
                 <NavLink data={ navList }></NavLink>
             </div>

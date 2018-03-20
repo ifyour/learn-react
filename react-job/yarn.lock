@@ -2078,6 +2078,12 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
 
+deep-eql@~3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/deep-eql/download/deep-eql-3.0.1.tgz#dfc9404400ad1c8fe023e7da1df1c147c4b444df"
+  dependencies:
+    type-detect "^4.0.0"
+
 deep-equal@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/deep-equal/download/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
@@ -5772,7 +5778,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@15.x, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.1"
   resolved "http://registry.npm.taobao.org/prop-types/download/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -5848,7 +5854,7 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/querystringify/download/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
-raf@3.4.0, raf@^3.1.0, raf@^3.3.2:
+raf@3.4.0, raf@^3.1.0, raf@^3.3.2, raf@~3.4.0:
   version "3.4.0"
   resolved "http://registry.npm.taobao.org/raf/download/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
@@ -5936,6 +5942,14 @@ rc-gesture@^0.0.15:
   dependencies:
     babel-runtime "6.x"
 
+rc-queue-anim@^1.4.1:
+  version "1.4.1"
+  resolved "http://registry.npm.taobao.org/rc-queue-anim/download/rc-queue-anim-1.4.1.tgz#52c4fbe84543f56656c61535d01984fcbdf56747"
+  dependencies:
+    babel-runtime "6.x"
+    prop-types "^15.5.0"
+    rc-tween-one "^1.5.0"
+
 rc-slider@~8.2.0:
   version "8.2.0"
   resolved "http://registry.npm.taobao.org/rc-slider/download/rc-slider-8.2.0.tgz#ae37d17144cad60e1da6eac0ee4ffcfea0b0a6e8"
@@ -5974,6 +5988,17 @@ rc-trigger@^2.2.2:
     rc-align "2.x"
     rc-animate "2.x"
     rc-util "^4.4.0"
+
+rc-tween-one@^1.5.0:
+  version "1.7.3"
+  resolved "http://registry.npm.taobao.org/rc-tween-one/download/rc-tween-one-1.7.3.tgz#1cdc0b88c0aaab481254c00e604b94af6ddbbc32"
+  dependencies:
+    babel-runtime "6.x"
+    deep-eql "~3.0.1"
+    prop-types "^15.5.0"
+    raf "~3.4.0"
+    style-utils "~0.1.13"
+    tween-functions "~1.2.0"
 
 rc-util@4.x, rc-util@^4.0.4, rc-util@^4.4.0:
   version "4.4.0"
@@ -7153,6 +7178,10 @@ style-loader@0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+style-utils@~0.1.13:
+  version "0.1.16"
+  resolved "http://registry.npm.taobao.org/style-utils/download/style-utils-0.1.16.tgz#d06cc892c1dc2b1ac16e73318fd810b26dfbb4a9"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -7399,7 +7428,7 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-tween-functions@^1.0.1:
+tween-functions@^1.0.1, tween-functions@~1.2.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/tween-functions/download/tween-functions-1.2.0.tgz#1ae3a50e7c60bb3def774eac707acbca73bbc3ff"
 
@@ -7412,6 +7441,10 @@ type-check@~0.3.2:
   resolved "http://registry.npm.taobao.org/type-check/download/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
   dependencies:
     prelude-ls "~1.1.2"
+
+type-detect@^4.0.0:
+  version "4.0.8"
+  resolved "http://registry.npm.taobao.org/type-detect/download/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
 
 type-is@~1.6.15:
   version "1.6.16"
