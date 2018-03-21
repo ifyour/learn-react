@@ -24,7 +24,10 @@ import csshook from 'css-modules-require-hook/preset';
 import assethook from 'asset-require-hook';
 import staticPath from '../build/asset-manifest.json';
 import App from '../src/app';
-assethook({ extensions: ['png'] });
+assethook({ 
+    extensions: ['png'],
+    limit: 25000// 小于25kb的图片转成 data URI
+});
 app.use((req, res, next) => {
     if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
         return next();// 执行下一个中间件
