@@ -1,4 +1,4 @@
-### Skill Stack Intro
+### Intro
 
 - React, Redux, React-router 4, redux-thunk, antd-mobile
 - Socket.io, MongoDB, Express
