@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import QueueAnim from 'rc-queue-anim';
 
 import NavLink from '../navlink/navlink';
