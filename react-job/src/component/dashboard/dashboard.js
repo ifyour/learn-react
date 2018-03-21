@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import QueueAnim from 'rc-queue-anim';
 
 import NavLink from '../navlink/navlink';
@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
         this.props.recvMsg();// 开始监听 socket 接收消息事件
     }
 
-    render(){
+    render() {
         const { pathname } = this.props.location;
         const { user } = this.props;
         const navList = [
@@ -58,27 +58,24 @@ class Dashboard extends React.Component {
             }
         ];
         // 查找出当前 Nav
-        const curNavItem = navList.find(v => v.path === pathname) || false;
-        return (
+        const curNavItem = navList.find(v => v.path === pathname);
+        return curNavItem ? (
             <div>
                 <NavBar className="fixed-header" mode="dard">
-                    { curNavItem ? curNavItem.title : null }
+                    {curNavItem ? curNavItem.title : null}
                 </NavBar>
                 <div className="page-center">
-                    <QueueAnim delay={ 100 } type="alpha">
-                        {
-                            curNavItem && 
-                            <Route 
-                                key={ curNavItem.path } 
-                                path={ curNavItem.path } 
-                                component={ curNavItem.component } 
-                            ></Route>
-                        }
+                    <QueueAnim delay={100} type="alpha">
+                        <Route
+                            key={curNavItem.path}
+                            path={curNavItem.path}
+                            component={curNavItem.component}
+                        ></Route>
                     </QueueAnim>
                 </div>
-                <NavLink data={ navList }></NavLink>
+                <NavLink data={navList}></NavLink>
             </div>
-        )
+        ) : <Redirect to='/msg' />
     }
 }
 
