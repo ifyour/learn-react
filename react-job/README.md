@@ -1,5 +1,5 @@
 ## What's this?
-> 找工作 — 基于 React 16 的实时聊天单页应用
+> 找工作 - 基于 React 16 的实时聊天单页应用
 
 ## Skill Stack
 - React, Redux, React-router 4, redux-thunk, antd-mobile
