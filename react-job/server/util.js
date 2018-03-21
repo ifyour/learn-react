@@ -1,4 +1,4 @@
-const utils = require('utility');
+import utils from 'utility';
 
 module.exports = {
     /**

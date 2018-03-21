@@ -1,13 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const path = require('path');
+import path from 'path';
+import http from 'http';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import socketio from 'socket.io';
+import React from 'react';
 
-const model = require('./model');
+import model from './model';
+import userRouter from './user';
+
 const Chat = model.getModel('chat');
 const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const server = http.Server(app);
+const io = socketio(server);
 
 // io 是 socket.io 全局实例
 io.on('connection', (socket)=>{
@@ -24,22 +29,17 @@ io.on('connection', (socket)=>{
   })
 })
 
-const userRouter = require('./user');
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use('/user', userRouter);
 
 // 路由拦截操作，用于服务端配置上线
 app.use((req, res, next) => {
-  // 如果访问的是 user || static 那么继续执行下一个中间件，否则就相应首页
   if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
-    return next();
+    return next();// 执行下一个中间件
   }
-  // path.resolve 转为物理绝对路径
   return res.sendFile(path.resolve('build/index.html'));
 })
-// 把 build 目录设置为静态资源目录
 app.use('/', express.static(path.resolve('build')));
 
 

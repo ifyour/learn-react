@@ -1,8 +1,8 @@
-const express = require('express');
-const Router = express.Router();
+import express from 'express';
 
-const utils = require('./util');
-const model = require('./model');
+import utils from './util'
+import model from './model'
+const Router = express.Router();
 const User = model.getModel('user');
 const Chat = model.getModel('chat');
 

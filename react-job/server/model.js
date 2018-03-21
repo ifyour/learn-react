@@ -1,6 +1,6 @@
-const Mongoose = require('mongoose');
-const BD_URL = 'mongodb://localhost:27017/imooc-chat';
+import Mongoose from 'mongoose';
 
+const BD_URL = 'mongodb://localhost:27017/imooc-chat';
 Mongoose.connect(BD_URL);
 Mongoose.connection.on('connected', () => {
   console.log('MongoDB connected!');
