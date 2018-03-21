@@ -4,7 +4,17 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import socketio from 'socket.io';
-import React from 'react';
+
+// // SSR 首屏渲染, Docs: https://devdocs.io/react/react-dom-server
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+
+// function App() {
+//   return <h2>Hello, SSR React!</h2>
+// }
+// // React 组件 => html
+// const htmlRes = renderToString(<App></App>);
+// console.log(htmlRes)
 
 import model from './model';
 import userRouter from './user';
@@ -38,6 +48,7 @@ app.use((req, res, next) => {
   if (req.url.startsWith('/user/') || req.url.startsWith('/static/')) {
     return next();// 执行下一个中间件
   }
+  // return res.send(htmlRes); // 渲染经过 renderToString 转过后的 HTML 代码
   return res.sendFile(path.resolve('build/index.html'));
 })
 app.use('/', express.static(path.resolve('build')));
