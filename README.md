@@ -11,20 +11,20 @@ React 学习仓库, 主要存放 Demo 和一些笔记.
 ### Usage
 
 ```bash
-# 切换目录
-$ cd $project-directory$
+# 以 react-job 为示例, 包含前后端 
+$ cd react-job
 
 # 安装依赖
 $ yarn
 
-# 启动服务端(需要启用 MongoDB 服务)
-$ node server/server.js
+# 启动服务端
+$ yarn run server
 
 # 开发
 $ yarn start
 
 # 构建
-$ yarn build
+$ yarn run build
 ```
 
 ### License
