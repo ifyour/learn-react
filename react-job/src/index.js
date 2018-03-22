@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import App from './app';
+import App from './App';
 import reducers from './redux';
 import './utils/axios.config';
 import './style/index.css';
@@ -15,7 +15,8 @@ const store = createStore(reducers, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-ReactDom.hydrate(
+const renderMethod = module.hot ? ReactDom.render : ReactDom.hydrate;
+renderMethod(
     <Provider store={ store }>
         <BrowserRouter>
             <App /> 

@@ -23,7 +23,7 @@ import reducers from '../src/redux';
 import csshook from 'css-modules-require-hook/preset';
 import assethook from 'asset-require-hook';
 import staticPath from '../build/asset-manifest.json';
-import App from '../src/app';
+import App from '../src/App';
 assethook({ 
     extensions: ['png'],
     limit: 25000// 小于25kb的图片转成 data URI
