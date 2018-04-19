@@ -3,7 +3,7 @@
 
 ## Skill Stack
 - React, Redux, React-router 4, redux-thunk, antd-mobile
-- Socket.io, MongoDB, Express
+- Socket.io, MongoDB([如何配置?](https://github.com/ifyour/learn-react/issues/4)), Express
 - [Redux 实现](https://github.com/ifyour/my-redux), React 服务端渲染 SSR
 
 ## Usage
