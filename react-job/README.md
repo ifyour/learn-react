@@ -9,10 +9,11 @@
 ## Usage
 ```bash
 # 安装依赖
-$ yarn
+$ yarn global add nodemon
+$ cd react-job && yarn
 
-# 启动服务端
-$ yarn run server
+# 启动服务端, SSR 需要依赖 build 后的文件
+$ yarn run build && yarn run server
 
 # 开发
 $ yarn start
