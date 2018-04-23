@@ -35,7 +35,7 @@ export const user = (state = initState, action) => {
   }
 }
 
-// action creater
+// action create
 // ----------------------------------------
 export const errorMsg = msg => ({msg, type: ERROR_MSG})
 export const loadUserInfo = (userinfo) =>({ payload: userinfo, type: LOAD_DATA })
