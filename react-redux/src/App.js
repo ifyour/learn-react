@@ -26,8 +26,8 @@ class App extends React.Component {
 
 // 对比上面 @connect 的写法, 上面采用了 babel 插件来优化 connect 写法
 
-// // 把 state 转成 props, 回调函数, 接收 state
-// const mapStatetoProps = state =>({num: state});
+// // 把 state 转成 props, 这里只需要 state 中的 counter
+// const mapStatetoProps = state =>({num: state.counter});
 // // 定义 redux 需要的 action
 // const actionCreaters = { addgun, removegun, addgunAsyac };
 // // 使用 react-redux 装饰模式, 先执行connect 方法, 返回一个包装函数, 然后包装 App 组件
