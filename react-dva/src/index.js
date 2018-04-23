@@ -2,7 +2,6 @@ import dva, { connect } from 'dva';
 import { Router, Route, Switch } from 'dva/router';
 
 import styles from './index.less';
-import { resolve } from 'url';
 
 // 1. Initialize
 const app = dva();
