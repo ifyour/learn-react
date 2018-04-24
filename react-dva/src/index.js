@@ -12,6 +12,7 @@ app.model({
   namespace: 'count',
   subscriptions: {
     keyboardWatcher({ dispatch }) {
+      // 定义一个键盘监听器, ⌘+up 或 ctrl+up 时 dispatch action
       key('⌘+up, ctrl+up', () => { dispatch({type:'addThenMinus'}) });
     },
   },
