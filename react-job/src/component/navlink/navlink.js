@@ -17,9 +17,9 @@ class NavLink extends React.Component {
         const navList = this.props.data.filter( v => !v.hide) // 过滤掉隐藏的 NavBar
         const { pathname } = this.props.location
         return (
-           <TabBar>
-               {
-                   navList.map(v =>(
+            <TabBar>
+                {
+                    navList.map(v =>(
                         <TabBar.Item 
                             badge={ v.path === '/msg' ? this.props.unread : 0 }
                             key={ v.path }
@@ -29,9 +29,9 @@ class NavLink extends React.Component {
                             selected={ pathname === v.path }
                             onPress={ ()=> this.props.history.push(v.path) }
                         ></TabBar.Item>
-                   ))
-               }
-           </TabBar>
+                    ))
+                }
+            </TabBar>
         )
     }
 }

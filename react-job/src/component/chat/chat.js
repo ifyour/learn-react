@@ -77,7 +77,7 @@ class Chat extends React.Component {
                         }) 
                     }
                 </QueueAnim>
-                 <div className="stick-footer">
+                <div className="stick-footer">
                     <List>
                         <InputItem 
                             placeholder="请输入信息"
@@ -99,18 +99,19 @@ class Chat extends React.Component {
                         ></InputItem>
                     </List>
                     {
-                        this.state.showEmoji
-                            ?  <Grid data={ emoji } 
-                                     columnNum={ 9 } 
-                                     isCarousel={ true } 
-                                     carouselMaxRow={ 4 }
-                                     onClick={ el=>{
-                                         this.setState({
-                                             text: this.state.text + el.text
-                                         })
-                                     } }
-                                />
-                            : null
+                    this.state.showEmoji
+                        ?  <Grid 
+                                data={ emoji } 
+                                columnNum={ 9 } 
+                                isCarousel={ true } 
+                                carouselMaxRow={ 4 }
+                                onClick={ el=>{
+                                    this.setState({
+                                        text: this.state.text + el.text
+                                    })
+                                } } 
+                            />
+                        : null
                     }
                 </div>
             </div>

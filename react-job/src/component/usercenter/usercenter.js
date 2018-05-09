@@ -26,7 +26,7 @@ class User extends React.Component {
                 this.props.logoutSubmit();
                 this.props.removeRecvMsg();// 结束消息监听
             } }
-          ])
+        ])
     }
 
     render() {
