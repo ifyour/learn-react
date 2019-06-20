@@ -6,6 +6,13 @@ import { login, registerSubmit } from '../../redux/user.redux';
 import { Redirect } from 'react-router-dom';
 import ImoocForm from '../../component/imooc-form/imooc-form';
 
+// 注意下面装饰器的用法，带参数的和不带参数的，本质上是高阶函数即函数柯里化应用
+// const newComponent = connect(mapStateToProps?: function, mapDispatchToProps?: object | function)(ImoocForm(Login)): ReactInstance
+// export default newComponent
+
+// 装饰器本质是一个函数，如果带参数的话，意思就是先执行，然后返回一个新函数，该函数再包裹当前组件 otherComponent = fn()(component)
+// 如果没有带参数，则直接包裹该组件 otherComponent = fn(component)
+
 @connect(
     state => state.user,
     { login, registerSubmit }
@@ -16,7 +23,7 @@ class Login extends React.Component {
         super(props);
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-    } 
+    }
 
     handleLogin() {
         this.props.login(this.props.state)
