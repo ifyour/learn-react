@@ -2868,9 +2868,9 @@ dva-core@^1.2.1:
     redux-saga "^0.16.0"
     warning "^3.0.0"
 
-dva@^2.2.3:
+dva@2.2.3:
   version "2.2.3"
-  resolved "http://registry.npm.taobao.org/dva/download/dva-2.2.3.tgz#9b452c080c6988f192f3b4d6b2f1ea44fa4d97de"
+  resolved "https://registry.yarnpkg.com/dva/-/dva-2.2.3.tgz#9b452c080c6988f192f3b4d6b2f1ea44fa4d97de"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.34"
     "@types/isomorphic-fetch" "^0.0.34"
@@ -5255,9 +5255,9 @@ jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-keymaster@^1.6.2:
+keymaster@1.6.2:
   version "1.6.2"
-  resolved "http://registry.npm.taobao.org/keymaster/download/keymaster-1.6.2.tgz#e1ae54d0ea9488f9f60b66b668f02e9a1946c6eb"
+  resolved "https://registry.yarnpkg.com/keymaster/-/keymaster-1.6.2.tgz#e1ae54d0ea9488f9f60b66b668f02e9a1946c6eb"
 
 killable@^1.0.0:
   version "1.0.0"
@@ -6940,9 +6940,9 @@ react-dev-utils@^5.0.0:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.2.0:
+react-dom@16.3.2, react-dom@^16.2.0:
   version "16.3.2"
-  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7021,9 +7021,9 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.0"
     react-is "^16.3.2"
 
-react@^16.2.0:
+react@16.3.2, react@^16.2.0:
   version "16.3.2"
-  resolved "http://registry.npm.taobao.org/react/download/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7425,9 +7425,9 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-roadhog@^2.0.0:
+roadhog@2.3.0:
   version "2.3.0"
-  resolved "http://registry.npm.taobao.org/roadhog/download/roadhog-2.3.0.tgz#e4562b47859210f83cb3a536bbf74ad175ed2989"
+  resolved "https://registry.yarnpkg.com/roadhog/-/roadhog-2.3.0.tgz#e4562b47859210f83cb3a536bbf74ad175ed2989"
   dependencies:
     "@babel/core" "^7.0.0-beta.38"
     "@babel/polyfill" "^7.0.0-beta.38"
